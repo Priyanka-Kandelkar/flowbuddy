@@ -1,68 +1,108 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
+/* ===== RESET ===== */
+html, body {
+  height: 100%;
   margin: 0;
+  overflow: hidden;
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background: #fff5f8;
+}
+
+/* ===== APP ROOT ===== */
+.app-root {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== PAGE AREA (FULL SCREEN) ===== */
+.page-area {
+  position: absolute;
+  inset: 0;              /* 🔥 FULL SCREEN */
+  overflow: hidden;      /* page controls its own scroll */
+}
+
+/* ===== PLACEHOLDER ===== */
+.placeholder {
+  height: 100%;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.placeholder-card {
+  background: rgba(255,255,255,0.6);
+  padding: 24px;
+  border-radius: 14px;
+  font-size: 20px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+/* ===== FLOATING NAVBAR ===== */
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 18px;
+
+  width: min(1100px, 96%);
+  height: 90px;
+
+  background: rgba(255,255,255,0.75); /* transparent overlay */
+  backdrop-filter: blur(8px);
+
+  padding: 12px 18px;
+  border-radius: 26px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  box-shadow: 0 10px 30px rgba(18,18,18,0.08);
+  z-index: 9999;
+}
+
+/* ===== NAV BUTTONS ===== */
+.nav-btn {
+  border: none;
+  background: transparent;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: #6b4352;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.nav-btn:hover {
+  transform: translateY(-3px);
+}
+
+.nav-btn.active {
+  background: linear-gradient(90deg,#ff98c7,#ff7fb3);
+  color: white;
+  box-shadow: 0 8px 22px rgba(255,125,170,0.16);
+}
+
+.nav-btn.center {
+  padding: 12px 22px;
+  border-radius: 18px;
+}
+
+/* ===== PAGE STACK ===== */
+.page-area {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.page {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.page.active {
+  opacity: 1;
+  pointer-events: auto;
 }

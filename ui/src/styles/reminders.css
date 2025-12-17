@@ -1,0 +1,177 @@
+:root {
+  --pink-bg: #fff5f8;
+  --pink-card: #ffe0ec;
+  --pink-accent: #ff8fb1;
+  --pink-dark: #ff5c8a;
+  --text-main: #4a2c3a;
+  --shadow-soft: 0 8px 20px rgba(255, 143, 177, 0.25);
+}
+
+/* ===== PAGE CONTAINER ===== */
+/* ===== OUTER BOX (FIXED SIZE) ===== */
+.reminders-container {
+  height: calc(100vh - 110px); /* bottom nav */
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+
+  background: #fff5f8;
+
+  border: 2px solid #ffb3c6;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden; /* 🔥 IMPORTANT */
+}
+
+/* ===== SCROLL AREA ===== */
+.reminders-scroll {
+  flex: 1;                  /* fills remaining space */
+  overflow-y: auto;
+  padding-right: 6px;       /* space for scrollbar */
+}
+
+/* ===== PINK SCROLLBAR ===== */
+.reminders-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.reminders-scroll::-webkit-scrollbar-track {
+  background: #ffe4ef;
+  border-radius: 10px;
+}
+
+.reminders-scroll::-webkit-scrollbar-thumb {
+  background: #ff8fb1;
+  border-radius: 10px;
+}
+
+.reminders-scroll::-webkit-scrollbar-thumb:hover {
+  background: #ff5c8a;
+}
+
+/* Firefox */
+.reminders-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #ff8fb1 #ffe4ef;
+}
+
+
+/* ===== HEADER ===== */
+.reminders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.reminders-header h2 {
+  color: var(--pink-dark);
+  font-weight: 700;
+}
+
+/* ===== ADD BUTTON ===== */
+.add-btn {
+  background: var(--pink-accent);
+  color: white;
+  border: none;
+  border-radius: 18px;
+  padding: 8px 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow-soft);
+}
+
+/* ===== PRESET BUTTONS ===== */
+.preset-reminders {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.preset-reminders button {
+  background: var(--pink-card);
+  border: none;
+  border-radius: 16px;
+  padding: 8px 14px;
+  cursor: pointer;
+  color: var(--text-main);
+  box-shadow: var(--shadow-soft);
+}
+
+/* ===== REMINDER LIST ===== */
+.reminder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ===== REMINDER CARD ===== */
+.reminder-card {
+  background: white;
+  border-radius: 16px;
+  padding: 14px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-soft);
+}
+
+/* Title = dark pink */
+.reminder-title {
+  color: var(--pink-dark);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Time = softer pink */
+.reminder-time {
+  color: var(--pink-accent);
+  font-size: 0.85rem;
+  margin-top: 2px;
+}
+
+/* Card actions */
+.card-actions button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+/* ===== SCROLL AREA ===== */
+.reminders-scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+/* Chrome / Edge / Safari */
+.reminders-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.reminders-scroll::-webkit-scrollbar-track {
+  background: #ffe4ef;
+  border-radius: 10px;
+}
+
+.reminders-scroll::-webkit-scrollbar-thumb {
+  background: #ff8fb1;
+  border-radius: 10px;
+}
+
+.reminders-scroll::-webkit-scrollbar-thumb:hover {
+  background: #ff5c8a;
+}
+
+/* Firefox */
+.reminders-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #ff8fb1 #ffe4ef;
+}
+.reminders-scroll {
+  max-height: 60%;
+}
+
+
