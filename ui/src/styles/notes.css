@@ -1,0 +1,211 @@
+/* ===== PAGE ===== */
+.notes-page {
+  height: 100%;
+  padding: 24px;
+  overflow-y: auto;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #ffffff 0%,
+    /*  #ffc1d5 40%,
+      #ff86aa 70%,  */
+      #ff9fbc 100%
+    );
+}
+
+
+/* ===== GRID ===== */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 18px;
+}
+
+/* ===== NOTE CARD ===== */
+.note-card {
+  height: 230px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 22px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.note-card h4 {
+  margin: 0;
+  font-size: 18px;
+  color: white; 
+  -webkit-text-stroke: 0.4px #fb309c;  
+}
+
+.note-card p {
+  font-size: 20px;
+  color: white;                 /* fill */
+  overflow: hidden;
+}
+.note-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.edit-btn:hover {
+  opacity: 1;
+}
+
+
+
+/* ===== ADD NOTE CARD ===== */
+.add-note-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 300;
+  color: #777;
+  border: 2px dashed #ccc;
+  border-radius: 22px;
+  background: #fff;
+}
+.notes-modal {
+  width: 340px;
+  background: #fff5f7;
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
+}
+
+
+/* ===== MODAL OVERLAY ===== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== MODAL ===== */
+.modal {
+  width: 300px;
+  background: #fff;
+  border: 1px solid #ccc;
+  padding: 16px;
+}
+
+/* ===== PRETTY MODAL ===== */
+.pretty-modal {
+  width: 320px;
+  padding: 22px;
+  background: #fff;
+  border: none;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+.modal-title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  color: #d36c8a;
+  font-weight: 600;
+}
+
+.modal-body input {
+  width: 90%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #f2b6c6;
+  font-size: 14px;
+  margin-bottom: 18px;
+  outline: none;
+}
+
+.modal-body input:focus {
+  border-color: #e98aa7;
+}
+
+
+
+.modal-header {
+  background: #ffb6c9;
+  border-radius: 16px;
+  padding: 14px;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #c84c6f;
+  font-weight: 600;
+}
+
+
+.color-options {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.color-swatch {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  border: 1px solid #bbb;
+  cursor: pointer;
+}
+
+.color-swatch.active {
+  outline: 3px solid #e98aa7;
+}
+
+
+/* ===== BUTTONS ===== */
+.modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.primary-btn {
+  background: #ff8fb1;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 20px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.ghost-btn {
+  background: transparent;
+  border: none;
+  color: #555;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.danger-btn {
+  background: #ffd6de;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  color: #a9445c;
+  cursor: pointer;
+}
+

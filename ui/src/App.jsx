@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Pomodoro from "./pages/Pomodoro";
 import Reminders from "./pages/Reminders";
+import Notes from './pages/Notes';
 
 function Placeholder({ title }) {
   return (
@@ -28,7 +29,7 @@ export default function App() {
         </div>
 
         <div className={`page ${route === "notes" ? "active" : ""}`}>
-          <Placeholder title="Notes" />
+          <Notes />
         </div>
 
         <div className={`page ${route === "flowbuddy" ? "active" : ""}`}>

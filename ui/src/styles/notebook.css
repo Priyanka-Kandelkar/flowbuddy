@@ -1,0 +1,78 @@
+.notebook-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 220, 230, 0.45);
+  backdrop-filter: blur(4px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 200;
+}
+
+
+.notebook-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-height: calc(100vh - 140px); /* 👈 THIS IS THE KEY */
+  margin-bottom: 120px;            /* 👈 pushes it above nav */
+}
+
+
+
+/* ===== TOP BAR ===== */
+.notebook-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.notebook-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.notebook-close {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ===== PAGES ===== */
+.notebook-pages {
+  display: flex;
+  gap: 28px;
+}
+
+/* ===== SINGLE PAGE ===== */
+.notebook-page.single {
+  width: 820px;
+  height: calc(100vh - 220px); /* 👈 dynamic height */
+  max-height: 500px;           /* 👈 portrait cap */
+
+  padding: 28px 24px;
+  background-color: #fffdf7;
+
+  outline: none;
+  overflow-y: auto;
+
+  font-size: 14px;
+  line-height: 22px;
+  white-space: pre-wrap;
+
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 20px,
+      rgba(140, 90, 60, 0.25) 21px
+    );
+
+  box-shadow: 0 14px 32px rgba(0,0,0,0.18);
+}
+
