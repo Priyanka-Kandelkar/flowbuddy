@@ -2,7 +2,7 @@
   "name": "flowbuddy",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "main.cjs",
   "scripts": {
     "dev": "concurrently \"npm run dev-ui\" \"npm run dev-electron\"",
     "dev-ui": "cd ui && npm run dev",
