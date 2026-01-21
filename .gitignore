@@ -22,6 +22,12 @@ Thumbs.db
 *.env
 *.local
 *.secret
+application.properties
+test.js
+
+# Maven build output
+target/
+
 
 # IDE/editor
 .vscode/
