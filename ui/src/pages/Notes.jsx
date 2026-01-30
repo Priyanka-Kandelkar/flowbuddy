@@ -64,6 +64,7 @@ export default function Notes() {
                                 setShowModal(true);
                             }}
                             onOpen={setOpenNote}
+                            onDelete={handleDelete}  
                         />
                     </motion.div>
                 ))}

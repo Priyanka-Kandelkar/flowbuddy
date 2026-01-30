@@ -1,4 +1,5 @@
-export default function NoteCard({ note, onEditMeta, onOpen }) {
+export default function NoteCard({ note, onEditMeta, onDelete, onOpen }) {
+
   return (
     <div
       className="note-card"
@@ -18,6 +19,17 @@ export default function NoteCard({ note, onEditMeta, onOpen }) {
         >
           ✏️
         </button>
+
+         <button
+      className="delete-btn"
+      onClick={(e) => {
+        e.stopPropagation();   // 👈 don't open note
+        onDelete(note.id);    // 👈 delete it
+      }}
+      title="Delete note"
+    >
+      🗑️
+    </button>
       </div>
 
       <p>

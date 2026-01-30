@@ -31,9 +31,11 @@ html, body {
 
 /* PAGE STACK */
 .page-area {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
 }
+
 
 .page {
   position: absolute;
@@ -67,7 +69,7 @@ html, body {
   bottom: 18px;
 
   width: min(1100px, 96%);
-  height: 90px;
+  height: 50px;
 
   background: rgba(255,255,255,0.75); /* transparent overlay */
   backdrop-filter: blur(8px);

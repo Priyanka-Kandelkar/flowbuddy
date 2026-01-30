@@ -3,17 +3,18 @@ import Pomodoro from "./pages/Pomodoro";
 import Reminders from "./pages/Reminders";
 import Notes from './pages/Notes';
 import FlowBuddy from "./pages/FlowBuddy";
+import Profile from "./pages/Profile";
 
 
-function Placeholder({ title }) {
-  return (
-    <div className="placeholder">
-      <div className="placeholder-card">
-        {title} page coming soon ✨
-      </div>
-    </div>
-  );
-}
+// function Placeholder({ title }) {
+//   return (
+//     <div className="placeholder">
+//       <div className="placeholder-card">
+//         {title} page coming soon ✨
+//       </div>
+//     </div>
+//   );
+// }
 
 export default function App() {
   const [route, setRoute] = useState("pomodoro");
@@ -39,7 +40,7 @@ export default function App() {
         </div>
 
         <div className={`page ${route === "profile" ? "active" : ""}`}>
-          <Placeholder title="Profile" />
+          <Profile />
         </div>
       </div>
 
