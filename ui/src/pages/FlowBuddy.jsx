@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { motion } from "framer-motion";
 
-
 import '../styles/flowbuddy.css'
 
 export default function FlowBuddy() {
@@ -13,8 +12,23 @@ export default function FlowBuddy() {
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behaviour: "smooth" });
-  }, [messages]);
+    const fetchMessages = async () => {
+      const response = await fetch(
+        "http://localhost:8081/chat/1"
+      );
+
+      const data = await response.json();
+
+      const formatted = data.map(msg => ({
+        role: msg.sender === "flowbuddy" ? "assistant" : "user",
+        content: msg.message
+      }));
+
+      setMessages(formatted);
+    };
+
+    fetchMessages();
+  }, []);
 
   const sendMessage = async () => {
     if (!input.trim() || loading) return;
@@ -24,8 +38,7 @@ export default function FlowBuddy() {
       content: input
     };
 
-    const updatedMessages = [...messages, userMessage];
-    setMessages(updatedMessages);
+    setMessages(prev => [...prev, userMessage]);
     setInput("");
     setLoading(true);
 
@@ -36,7 +49,9 @@ export default function FlowBuddy() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          messages: updatedMessages
+          userId: 1,
+          chatId: 1,
+          message: input
         })
       });
 
@@ -47,10 +62,11 @@ export default function FlowBuddy() {
         content: data.reply
       };
 
-      setMessages([...updatedMessages, aiMessage]);
+      setMessages(prev => [...prev, aiMessage]);
+
     } catch (err) {
-      setMessages([
-        ...updatedMessages,
+      setMessages(prev => [
+        ...prev,
         {
           role: "assistant",
           content: "Sorry, something went wrong 😢"
@@ -69,17 +85,17 @@ export default function FlowBuddy() {
 
       <div className="flowbuddy-body">
         <div className="flowbuddy-chat">
-  <div className="chat-lane">
-    {messages.map((msg, idx) => (
-      <div key={idx} className={`chat-row ${msg.role}`}>
-        <div className={`chat-bubble ${msg.role}`}>
-          <ReactMarkdown>{msg.content}</ReactMarkdown>
+          <div className="chat-lane">
+            {messages.map((msg, idx) => (
+              <div key={idx} className={`chat-row ${msg.role}`}>
+                <div className={`chat-bubble ${msg.role}`}>
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                </div>
+              </div>
+            ))}
+            <div ref={bottomRef} />
+          </div>
         </div>
-      </div>
-    ))}
-    <div ref={bottomRef} />
-  </div>
-</div>
 
 
         <div className="flowbuddy-input">
@@ -90,12 +106,12 @@ export default function FlowBuddy() {
             onKeyDown={(e) => e.key === "Enter" && sendMessage()}
           />
           <button
-  className="send-btn"
-  onClick={sendMessage}
-  disabled={loading}
->
-  {loading ? "Thinking…" : "Send 💗"}
-</button>
+            className="send-btn"
+            onClick={sendMessage}
+            disabled={loading}
+          >
+            {loading ? "Thinking…" : "Send 💗"}
+          </button>
 
         </div>
 

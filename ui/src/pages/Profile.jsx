@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../styles/profile.css";
 import { useRef } from "react";
+import { useEffect } from "react";
 
 
 export default function Profile() {
@@ -20,6 +21,7 @@ export default function Profile() {
   const fileRef = useRef(null);
   const [avatarClicked, setAvatarClicked] = useState(false);
 
+  const [saved, setSaved] = useState(false);
 
   const handleAvatarChange = (e) => {
     const file = e.target.files[0];
@@ -27,6 +29,57 @@ export default function Profile() {
     const url = URL.createObjectURL(file);
     setAvatarImage(url);
   };
+
+
+  const savePreferences = async () => {
+    try {
+      await fetch("http://localhost:8081/user/preferences", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          userId: 1,
+          tone,
+          goal,
+          focusTime
+        })
+      });
+
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2000);
+
+    } catch (error) {
+      console.error("Error saving preferences:", error);
+    }
+  };
+
+
+  useEffect(() => {
+    const fetchPreferences = async () => {
+      try {
+        const response = await fetch(
+          "http://localhost:8081/user/preferences/1"
+        );
+
+        if (!response.ok) return;
+
+        const text = await response.text();
+
+        if (!text) return; // handle empty body safely
+
+        const data = JSON.parse(text);
+
+        setTone(data.tone);
+        setGoal(data.goal);
+        setFocusTime(data.focusTime);
+
+      } catch (error) {
+        console.error("Error loading preferences:", error);
+      }
+    };
+
+    fetchPreferences();
+  }, []);
+
 
 
   return (
@@ -162,7 +215,18 @@ export default function Profile() {
               </button>
             ))}
           </div>
+          <div className="pref-save">
+            <button
+              className="save-pref-btn"
+              onClick={savePreferences}
+            >
+              Save Preferences
+            </button>
+          </div>
+          {saved && <p className="saved-msg">Preferences saved ✨</p>}
         </div>
+
+
 
         {/* STATS */}
         <div className="profile-section">
